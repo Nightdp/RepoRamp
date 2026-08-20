@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: RepoRamp contribution guide
-    url: https://github.com/Nightdp/reposense-py/blob/main/CONTRIBUTING.md
+    url: https://github.com/Nightdp/RepoRamp/blob/main/CONTRIBUTING.md
     about: Read the contribution guide before opening a pull request or proposing a larger change.
   - name: RepoRamp security policy
-    url: https://github.com/Nightdp/reposense-py/blob/main/SECURITY.md
+    url: https://github.com/Nightdp/RepoRamp/blob/main/SECURITY.md
     about: Please use the private reporting path in SECURITY.md instead of opening a public issue for vulnerabilities.

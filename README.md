@@ -1,6 +1,6 @@
 # RepoRamp
 
-[![Tests](https://github.com/Nightdp/reposense-py/actions/workflows/test.yml/badge.svg)](https://github.com/Nightdp/reposense-py/actions/workflows/test.yml)
+[![Tests](https://github.com/Nightdp/RepoRamp/actions/workflows/test.yml/badge.svg)](https://github.com/Nightdp/RepoRamp/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 
 `RepoRamp` is a local-first CLI for understanding unfamiliar Python repositories quickly.

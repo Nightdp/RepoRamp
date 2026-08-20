@@ -34,6 +34,7 @@ The format is intentionally lightweight while the project is still early-stage.
 - architecture documentation describing the CLI flow and core components
 - clearer README doc navigation for evaluators and contributors
 - issue template contact links updated to point at the main branch
+- repository metadata and badges updated to the canonical `Nightdp/RepoRamp` repository name
 
 ### Project status
 

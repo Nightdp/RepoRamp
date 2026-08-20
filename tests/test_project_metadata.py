@@ -11,6 +11,10 @@ def test_pyproject_declares_release_metadata() -> None:
     assert "keywords = [" in pyproject
     assert "classifiers = [" in pyproject
     assert "[project.urls]" in pyproject
+    assert 'Homepage = "https://github.com/Nightdp/RepoRamp"' in pyproject
+    assert 'Source = "https://github.com/Nightdp/RepoRamp"' in pyproject
+    assert 'Issues = "https://github.com/Nightdp/RepoRamp/issues"' in pyproject
+    assert 'Changelog = "https://github.com/Nightdp/RepoRamp/blob/main/CHANGELOG.md"' in pyproject
 
 
 def test_pyproject_declares_dev_extra() -> None:

@@ -27,5 +27,11 @@ def test_issue_template_contact_links_use_main_branch() -> None:
         encoding="utf-8"
     )
 
-    assert "/blob/main/CONTRIBUTING.md" in config
-    assert "/blob/main/SECURITY.md" in config
+    assert "https://github.com/Nightdp/RepoRamp/blob/main/CONTRIBUTING.md" in config
+    assert "https://github.com/Nightdp/RepoRamp/blob/main/SECURITY.md" in config
+
+
+def test_readme_uses_current_repository_badge_url() -> None:
+    readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
+
+    assert "https://github.com/Nightdp/RepoRamp/actions/workflows/test.yml/badge.svg" in readme

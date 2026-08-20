@@ -32,10 +32,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Nightdp/reposense-py"
-Source = "https://github.com/Nightdp/reposense-py"
-Issues = "https://github.com/Nightdp/reposense-py/issues"
-Changelog = "https://github.com/Nightdp/reposense-py/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Nightdp/RepoRamp"
+Source = "https://github.com/Nightdp/RepoRamp"
+Issues = "https://github.com/Nightdp/RepoRamp/issues"
+Changelog = "https://github.com/Nightdp/RepoRamp/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = ["pytest>=9,<10"]
