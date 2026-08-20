@@ -1,0 +1,42 @@
+name: Feature request
+description: Suggest a scoped improvement for RepoRamp
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion.
+
+        RepoRamp is intentionally narrow, so the best feature requests usually improve repository understanding without turning the project into a general-purpose coding assistant.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the maintainer or contributor workflow that is blocked today.
+      placeholder: It is hard to see which files should be read first in Django-style repositories.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What change would you like?
+      description: Keep it concrete and scoped.
+      placeholder: Add a framework hint and better file ranking for common Django startup files.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Share workarounds or simpler approaches you considered.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Why is this still in scope for RepoRamp?
+      description: Help explain why this supports repository orientation rather than code generation.
+      placeholder: This improves startup-file detection and keeps the tool deterministic.
+    validations:
+      required: true
+

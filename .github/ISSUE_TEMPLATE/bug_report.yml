@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible problem in RepoRamp
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug.
+
+        RepoRamp works best when bugs come with a small reproduction path, expected behavior, and actual behavior.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the bug and the impact on your workflow.
+      placeholder: Running `reporamp summary` on a src-layout project missed the main entry point.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How can we reproduce it?
+      description: Include commands, repository shape, or a minimal fixture-like example.
+      placeholder: |
+        1. Run `reporamp summary path/to/repo`
+        2. Observe the reported entry points
+        3. Compare with the actual startup file
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: I expected RepoRamp to surface `src/pkgdemo/app.py` as the likely entry point.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Share the basics needed to reason about the bug.
+      placeholder: |
+        OS:
+        Python version:
+        RepoRamp version or commit:
+        Project type:
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Extra context
+      description: Add logs, screenshots, or notes about workarounds if they help.
+
