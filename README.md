@@ -73,6 +73,8 @@ reporamp files path/to/repo --json
 reporamp files path/to/repo --output key-files.txt
 reporamp ask path/to/repo "Where is the config?"
 reporamp ask path/to/repo "Where is the config?" --json
+reporamp ask path/to/repo "Where are the docs?"
+reporamp ask path/to/repo "Where is the README?"
 reporamp ask path/to/repo "Where is the config?" --json --output config.json
 ```
 
@@ -110,6 +112,9 @@ Entry Points:
 
 Tests:
 - none detected
+
+Documentation:
+- README.md
 
 Suggested Reading Order:
 - pyproject.toml: project configuration
@@ -155,6 +160,8 @@ just one-off demos.
 
 ```bash
 reporamp ask path/to/repo "Where is the config?"
+reporamp ask path/to/repo "Where are the docs?"
+reporamp ask path/to/repo "Where is the README?"
 reporamp ask path/to/repo "Where are the tests?"
 reporamp ask path/to/repo "Which files should I read first?"
 reporamp ask path/to/repo "What is the package layout?"

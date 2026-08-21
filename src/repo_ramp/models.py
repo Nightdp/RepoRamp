@@ -6,6 +6,7 @@ class RepositoryIndex:
     root: str
     project_name: str | None = None
     readme_files: list[str] = field(default_factory=list)
+    documentation_files: list[str] = field(default_factory=list)
     config_files: list[str] = field(default_factory=list)
     package_roots: list[str] = field(default_factory=list)
     python_files: list[str] = field(default_factory=list)

@@ -4,6 +4,8 @@ from .models import RepositoryIndex
 SUPPORTED_PATTERNS = {
     "config": ("config", "configuration", "settings"),
     "tests": ("tests", "test suite"),
+    "docs": ("docs", "documentation"),
+    "readme": ("readme",),
     "startup_flow": ("startup flow", "how does this start", "how does this project start"),
     "package_layout": ("package layout", "package root", "package structure", "src layout"),
     "entry_points": ("start", "run", "entry point", "main"),
@@ -19,6 +21,20 @@ def answer_question(index: RepositoryIndex, question: str) -> str:
 
     if any(token in lowered for token in SUPPORTED_PATTERNS["tests"]):
         return "Test files:\n" + "\n".join(f"- {item}" for item in index.test_files)
+
+    if any(token in lowered for token in SUPPORTED_PATTERNS["docs"]):
+        if not index.documentation_files:
+            return "Documentation files:\n- none detected"
+
+        return "Documentation files:\n" + "\n".join(
+            f"- {item}" for item in index.documentation_files
+        )
+
+    if any(token in lowered for token in SUPPORTED_PATTERNS["readme"]):
+        if not index.readme_files:
+            return "README files:\n- none detected"
+
+        return "README files:\n" + "\n".join(f"- {item}" for item in index.readme_files)
 
     if any(token in lowered for token in SUPPORTED_PATTERNS["startup_flow"]):
         lines = ["Startup flow:"]
@@ -50,6 +66,6 @@ def answer_question(index: RepositoryIndex, question: str) -> str:
         )
 
     return (
-        "Supported questions: entry points, config, tests, package layout, startup flow, "
-        "files to read first."
+        "Supported questions: entry points, config, tests, docs, readme, package layout, "
+        "startup flow, files to read first."
     )

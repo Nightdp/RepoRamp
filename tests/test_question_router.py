@@ -37,3 +37,21 @@ def test_answer_question_handles_startup_flow_lookup() -> None:
     assert "Startup flow:" in answer
     assert "tool_cli/cli.py (__main__ block)" in answer
     assert "pyproject.toml" in answer
+
+
+def test_answer_question_handles_docs_lookup() -> None:
+    index = build_index(Path("tests/fixtures/web_app"))
+
+    answer = answer_question(index, "Where are the docs?")
+
+    assert "Documentation files:" in answer
+    assert "docs/getting-started.md" in answer
+
+
+def test_answer_question_handles_readme_lookup() -> None:
+    index = build_index(Path("tests/fixtures/web_app"))
+
+    answer = answer_question(index, "Where is the README?")
+
+    assert "README files:" in answer
+    assert "README.md" in answer

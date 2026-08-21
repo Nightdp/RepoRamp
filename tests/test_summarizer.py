@@ -21,4 +21,6 @@ def test_summary_mentions_tests_and_framework_hints() -> None:
     output = render_summary(index)
 
     assert "Tests" in output
+    assert "Documentation" in output
+    assert "docs/getting-started.md" in output
     assert "fastapi" in output.lower()

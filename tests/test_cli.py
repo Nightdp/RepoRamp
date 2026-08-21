@@ -137,6 +137,20 @@ def test_ask_command_can_write_json_output_to_file(tmp_path) -> None:
     assert "tool_cli/cli.py (__main__ block)" in payload["answer"]
 
 
+def test_ask_command_supports_docs_json_output() -> None:
+    result = runner.invoke(
+        app,
+        ["ask", "tests/fixtures/web_app", "Where are the docs?", "--json"],
+    )
+
+    assert result.exit_code == 0
+
+    payload = json.loads(result.stdout)
+
+    assert payload["match_type"] == "docs"
+    assert "docs/getting-started.md" in payload["answer"]
+
+
 def test_summary_command_supports_markdown_output() -> None:
     result = runner.invoke(app, ["summary", "tests/fixtures/basic_cli", "--markdown"])
 
@@ -147,16 +161,18 @@ def test_summary_command_supports_markdown_output() -> None:
 
 
 def test_summary_command_supports_json_output() -> None:
-    result = runner.invoke(app, ["summary", "tests/fixtures/basic_cli", "--json"])
+    result = runner.invoke(app, ["summary", "tests/fixtures/web_app", "--json"])
 
     assert result.exit_code == 0
 
     payload = json.loads(result.stdout)
 
-    assert payload["repository"] == "tool-cli"
-    assert payload["entry_points"][0]["path"] == "tool_cli/cli.py"
+    assert payload["repository"] == "webapp"
+    assert payload["entry_points"][0]["path"] == "webapp/main.py"
+    assert payload["readme_files"] == ["README.md"]
+    assert "docs/getting-started.md" in payload["documentation_files"]
     assert payload["suggested_reading_order"][0]["path"] == "pyproject.toml"
-    assert payload["framework_hints"] == ["typer"]
+    assert payload["framework_hints"] == ["fastapi"]
 
 
 def test_summary_command_can_write_markdown_to_file(tmp_path) -> None:

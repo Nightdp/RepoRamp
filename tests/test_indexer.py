@@ -30,3 +30,13 @@ def test_build_index_tracks_syntax_errors_without_crashing() -> None:
 
     assert index.skipped_files == ["badpkg/broken.py"]
     assert "badpkg" in index.package_roots
+
+
+def test_build_index_tracks_readme_and_docs_files() -> None:
+    repo = Path("tests/fixtures/web_app")
+
+    index = build_index(repo)
+
+    assert "README.md" in index.readme_files
+    assert "README.md" in index.documentation_files
+    assert "docs/getting-started.md" in index.documentation_files

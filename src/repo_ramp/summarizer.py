@@ -8,6 +8,8 @@ def _build_summary_payload(index: RepositoryIndex) -> dict[str, object]:
         "repository": index.project_name or "unknown",
         "entry_points": index.entry_points,
         "tests": index.test_files,
+        "readme_files": index.readme_files,
+        "documentation_files": index.documentation_files,
         "suggested_reading_order": index.key_files,
         "framework_hints": index.framework_hints,
     }
@@ -28,6 +30,12 @@ def _render_markdown_summary(index: RepositoryIndex) -> str:
     lines.extend(["", "## Tests"])
     if index.test_files:
         lines.extend(f"- `{path}`" for path in index.test_files)
+    else:
+        lines.append("- none detected")
+
+    lines.extend(["", "## Documentation"])
+    if index.documentation_files:
+        lines.extend(f"- `{path}`" for path in index.documentation_files)
     else:
         lines.append("- none detected")
 
@@ -67,6 +75,12 @@ def render_summary(
     lines.extend(["", "Tests:"])
     if index.test_files:
         lines.extend(f"- {path}" for path in index.test_files)
+    else:
+        lines.append("- none detected")
+
+    lines.extend(["", "Documentation:"])
+    if index.documentation_files:
+        lines.extend(f"- {path}" for path in index.documentation_files)
     else:
         lines.append("- none detected")
 

@@ -35,6 +35,9 @@ The format is intentionally lightweight while the project is still early-stage.
 - clearer README doc navigation for evaluators and contributors
 - issue template contact links updated to point at the main branch
 - repository metadata and badges updated to the canonical `Nightdp/RepoRamp` repository name
+- documentation discovery for `README` and `docs/` files
+- docs and readme question support in the ask command
+- summary output now includes documentation files in plain text, markdown, and json formats
 
 ### Project status
 

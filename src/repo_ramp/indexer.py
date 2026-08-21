@@ -13,6 +13,7 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10 fallback
 
 CONFIG_NAMES = {"pyproject.toml", "setup.py", "setup.cfg", "pytest.ini", "tox.ini"}
 README_NAMES = {"README.md", "README.rst", "README.txt"}
+DOCUMENTATION_SUFFIXES = {".md", ".rst", ".txt"}
 
 
 def _record_framework_hint(index: RepositoryIndex, hint: str) -> None:
@@ -23,6 +24,11 @@ def _record_framework_hint(index: RepositoryIndex, hint: str) -> None:
 def _record_key_file(index: RepositoryIndex, path: str, reason: str) -> None:
     if not any(item["path"] == path for item in index.key_files):
         index.key_files.append({"path": path, "reason": reason})
+
+
+def _record_documentation_file(index: RepositoryIndex, path: str) -> None:
+    if path not in index.documentation_files:
+        index.documentation_files.append(path)
 
 
 def _analyze_python_file(root: Path, path: Path, index: RepositoryIndex) -> None:
@@ -81,6 +87,10 @@ def build_index(root: Path) -> RepositoryIndex:
 
         if path.name in README_NAMES:
             index.readme_files.append(rel)
+            _record_documentation_file(index, rel)
+
+        if rel.startswith("docs/") and path.suffix in DOCUMENTATION_SUFFIXES:
+            _record_documentation_file(index, rel)
 
         if path.name in CONFIG_NAMES:
             index.config_files.append(rel)

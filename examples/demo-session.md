@@ -50,6 +50,9 @@ Entry Points:
 Tests:
 - none detected
 
+Documentation:
+- README.md
+
 Suggested Reading Order:
 - pyproject.toml: project configuration
 - tool_cli/cli.py: likely startup or high-value module
@@ -129,6 +132,9 @@ Output:
 ## Tests
 - none detected
 
+## Documentation
+- `README.md`
+
 ## Suggested Reading Order
 - `pyproject.toml`: project configuration
 - `tool_cli/cli.py`: likely startup or high-value module
@@ -171,6 +177,12 @@ Output:
     }
   ],
   "tests": [],
+  "readme_files": [
+    "README.md"
+  ],
+  "documentation_files": [
+    "README.md"
+  ],
   "suggested_reading_order": [
     {
       "path": "pyproject.toml",
@@ -185,6 +197,37 @@ Output:
     "typer"
   ]
 }
+```
+
+## Ask where the docs live
+
+Command:
+
+```bash
+reporamp ask tests/fixtures/web_app "Where are the docs?"
+```
+
+Output:
+
+```text
+Documentation files:
+- README.md
+- docs/getting-started.md
+```
+
+## Ask where the README lives
+
+Command:
+
+```bash
+reporamp ask tests/fixtures/web_app "Where is the README?"
+```
+
+Output:
+
+```text
+README files:
+- README.md
 ```
 
 ## Ask where configuration lives

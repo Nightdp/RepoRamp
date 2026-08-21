@@ -44,8 +44,8 @@ indexing and rendering layers.
 The indexer is the main analysis layer.
 
 It walks the repository tree, records candidate config files, package roots,
-tests, likely entry points, and framework hints, then stores those findings in a
-single `RepositoryIndex` object.
+tests, likely entry points, readme/docs files, and framework hints, then stores
+those findings in a single `RepositoryIndex` object.
 
 Current heuristics are intentionally narrow:
 
@@ -53,6 +53,7 @@ Current heuristics are intentionally narrow:
 - AST inspection for `if __name__ == "__main__"` blocks
 - light framework hinting from imports such as `typer` and `fastapi`
 - `pyproject.toml` parsing for the project name
+- lightweight documentation discovery from `README.*` and `docs/`
 
 ### `repo_ramp.models`
 

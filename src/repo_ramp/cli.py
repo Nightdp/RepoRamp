@@ -15,6 +15,8 @@ app = typer.Typer(help="Understand unfamiliar Python repositories.")
 QUESTION_MATCH_ORDER = (
     "config",
     "tests",
+    "docs",
+    "readme",
     "startup_flow",
     "package_layout",
     "entry_points",
