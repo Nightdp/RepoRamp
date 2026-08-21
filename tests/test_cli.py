@@ -50,6 +50,8 @@ def test_files_command_lists_key_files() -> None:
     result = runner.invoke(app, ["files", "tests/fixtures/web_app"])
 
     assert result.exit_code == 0
+    assert "README.md: project overview and setup guide" in result.stdout
+    assert "docs/getting-started.md: supplemental project documentation" in result.stdout
     assert "webapp/main.py" in result.stdout
     assert "pyproject.toml" in result.stdout
 
@@ -63,7 +65,15 @@ def test_files_command_supports_json_output() -> None:
 
     assert payload[0]["path"] == "pyproject.toml"
     assert payload[0]["reason"] == "project configuration"
-    assert payload[1]["path"] == "webapp/main.py"
+    assert payload[1] == {
+        "path": "README.md",
+        "reason": "project overview and setup guide",
+    }
+    assert payload[2] == {
+        "path": "docs/getting-started.md",
+        "reason": "supplemental project documentation",
+    }
+    assert payload[3]["path"] == "webapp/main.py"
 
 
 def test_files_command_can_write_output_to_file(tmp_path) -> None:
@@ -80,6 +90,8 @@ def test_files_command_can_write_output_to_file(tmp_path) -> None:
     rendered = output_path.read_text(encoding="utf-8")
 
     assert "pyproject.toml: project configuration" in rendered
+    assert "README.md: project overview and setup guide" in rendered
+    assert "docs/getting-started.md: supplemental project documentation" in rendered
     assert "webapp/main.py: likely startup or high-value module" in rendered
 
 

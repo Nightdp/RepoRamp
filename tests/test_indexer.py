@@ -40,3 +40,16 @@ def test_build_index_tracks_readme_and_docs_files() -> None:
     assert "README.md" in index.readme_files
     assert "README.md" in index.documentation_files
     assert "docs/getting-started.md" in index.documentation_files
+
+
+def test_build_index_surfaces_docs_in_key_file_reading_order() -> None:
+    repo = Path("tests/fixtures/web_app")
+
+    index = build_index(repo)
+
+    assert index.key_files[:4] == [
+        {"path": "pyproject.toml", "reason": "project configuration"},
+        {"path": "README.md", "reason": "project overview and setup guide"},
+        {"path": "docs/getting-started.md", "reason": "supplemental project documentation"},
+        {"path": "webapp/main.py", "reason": "likely startup or high-value module"},
+    ]

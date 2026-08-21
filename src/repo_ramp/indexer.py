@@ -31,6 +31,29 @@ def _record_documentation_file(index: RepositoryIndex, path: str) -> None:
         index.documentation_files.append(path)
 
 
+def _sort_key_files(index: RepositoryIndex) -> None:
+    config_paths = set(index.config_files)
+    readme_paths = set(index.readme_files)
+    documentation_only_paths = set(index.documentation_files) - readme_paths
+    entry_point_paths = {item["path"] for item in index.entry_points}
+
+    def sort_key(item: dict[str, str]) -> tuple[int, str]:
+        path = item["path"]
+
+        if path in config_paths:
+            return (0, path)
+        if path in readme_paths:
+            return (1, path)
+        if path in documentation_only_paths:
+            return (2, path)
+        if path in entry_point_paths:
+            return (3, path)
+
+        return (4, path)
+
+    index.key_files.sort(key=sort_key)
+
+
 def _analyze_python_file(root: Path, path: Path, index: RepositoryIndex) -> None:
     rel = path.relative_to(root).as_posix()
 
@@ -88,9 +111,11 @@ def build_index(root: Path) -> RepositoryIndex:
         if path.name in README_NAMES:
             index.readme_files.append(rel)
             _record_documentation_file(index, rel)
+            _record_key_file(index, rel, "project overview and setup guide")
 
         if rel.startswith("docs/") and path.suffix in DOCUMENTATION_SUFFIXES:
             _record_documentation_file(index, rel)
+            _record_key_file(index, rel, "supplemental project documentation")
 
         if path.name in CONFIG_NAMES:
             index.config_files.append(rel)
@@ -110,5 +135,7 @@ def build_index(root: Path) -> RepositoryIndex:
     if pyproject.exists():
         data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
         index.project_name = data.get("project", {}).get("name")
+
+    _sort_key_files(index)
 
     return index

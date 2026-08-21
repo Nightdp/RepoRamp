@@ -73,6 +73,8 @@ Output:
 
 ```text
 pyproject.toml: project configuration
+README.md: project overview and setup guide
+docs/getting-started.md: supplemental project documentation
 webapp/main.py: likely startup or high-value module
 ```
 
@@ -91,6 +93,14 @@ Output:
   {
     "path": "pyproject.toml",
     "reason": "project configuration"
+  },
+  {
+    "path": "README.md",
+    "reason": "project overview and setup guide"
+  },
+  {
+    "path": "docs/getting-started.md",
+    "reason": "supplemental project documentation"
   },
   {
     "path": "webapp/main.py",

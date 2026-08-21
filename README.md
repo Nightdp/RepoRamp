@@ -52,6 +52,7 @@ Current capabilities:
 
 - detect likely entry points
 - surface configuration files
+- surface `README` and `docs/` content in suggested reading order
 - locate tests and package roots
 - highlight important files with short reasons
 - answer a constrained set of repository-orientation questions

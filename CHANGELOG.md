@@ -38,6 +38,7 @@ The format is intentionally lightweight while the project is still early-stage.
 - documentation discovery for `README` and `docs/` files
 - docs and readme question support in the ask command
 - summary output now includes documentation files in plain text, markdown, and json formats
+- key file recommendations now prioritize `README` and `docs/` content before deeper code files
 
 ### Project status
 
